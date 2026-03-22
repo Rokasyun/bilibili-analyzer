@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "frontend/package.json",
@@ -8,16 +7,6 @@
     {
       "src": "backend/src/vercel-index.ts",
       "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/backend/src/vercel-index.ts"
-    },
-    {
-      "src": "/health",
-      "dest": "/backend/src/vercel-index.ts"
     }
   ]
 }
