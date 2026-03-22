@@ -8,7 +8,7 @@
     "build:frontend": "cd frontend && npm run build",
     "build:backend": "cd backend && npm run build",
     "build": "npm run build:backend && npm run build:frontend",
-    "deploy:check": "node -e \"console.log('Deployment check script')\""
+    "vercel-build": "npm install && cd backend && npm install && npm run build && cd ../frontend && npm install && npm run build"
   },
   "keywords": ["bilibili", "analyzer", "react", "express"],
   "author": "",

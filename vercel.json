@@ -2,7 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/src/index.ts",
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "dist": "dist"
+      }
+    },
+    {
+      "src": "backend/src/vercel-index.ts",
       "use": "@vercel/node"
     }
   ],
@@ -14,6 +21,10 @@
     {
       "src": "/health",
       "dest": "backend/src/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/$1"
     }
   ],
   "env": {
