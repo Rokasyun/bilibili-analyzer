@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getUserAnalysis, AnalysisResult } from '../api'
-import { motion, AnimatePresence } from 'framer-motion'
-import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts'
+import { motion } from 'framer-motion'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts'
 import DynamicBackground from '../components/DynamicBackground'
-
-const COLORS = ['#fb7299', '#00aeec', '#ffb37e', '#00c091', '#8884D8', '#82CA9D', '#FFC658', '#FF6B9D']
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -725,11 +723,11 @@ function ResultPage() {
                       fill="#fb7299" 
                       radius={[4, 4, 0, 0]}
                     >
-                      {data.user.activityHeatmap.map((entry, index) => (
+                      {data.user.activityHeatmap?.map((entry, index) => (
                         <Cell 
                           key={`cell-${index}`} 
                           fill={entry.count === 0 ? (isDark ? '#1e293b' : '#f1f5f9') : '#fb7299'} 
-                          fillOpacity={entry.count === 0 ? 1 : 0.4 + (entry.count / Math.max(...data.user.activityHeatmap.map(d => d.count), 1)) * 0.6}
+                          fillOpacity={entry.count === 0 ? 1 : 0.4 + (entry.count / Math.max(...(data.user.activityHeatmap?.map(d => d.count) || [1]), 1)) * 0.6}
                         />
                       ))}
                     </Bar>
