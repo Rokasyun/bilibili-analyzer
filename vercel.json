@@ -2,11 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "dist": "frontend/dist"
-      }
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build"
     },
     {
       "src": "backend/src/vercel-index.ts",
@@ -16,18 +13,11 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/src/vercel-index.ts"
+      "dest": "/backend/src/vercel-index.ts"
     },
     {
       "src": "/health",
-      "dest": "backend/src/vercel-index.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
+      "dest": "/backend/src/vercel-index.ts"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
