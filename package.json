@@ -1,0 +1,19 @@
+{
+  "name": "bilibili-analyzer",
+  "version": "1.0.0",
+  "description": "A web application to analyze Bilibili user composition",
+  "scripts": {
+    "install:all": "cd frontend && npm install && cd ../backend && npm install",
+    "dev": "concurrently --kill-others --handle-input \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "deploy:check": ".\deploy-check.bat"
+  },
+  "keywords": ["bilibili", "analyzer", "react", "express"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

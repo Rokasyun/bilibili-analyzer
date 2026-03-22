@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json.schemastore.org/nixpacks",
+  "builds": [
+    {
+      "matcher": "backend",
+      "command": "npm install && npm run build"
+    }
+  ],
+  "phases": {
+    "install": {
+      "dependsOn": ["backend"],
+      "cmds": ["npm ci"]
+    },
+    "build": {
+      "dependsOn": ["install"],
+      "cmds": ["cd backend && npm run build"]
+    }
+  }
+}

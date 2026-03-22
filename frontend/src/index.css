@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes reverse-spin {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-reverse-spin {
+  animation: reverse-spin 1s linear infinite;
+}
+
+@keyframes gradient-x {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes wave-flow {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.animate-wave-slow {
+  animation: wave-flow 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+.animate-wave-fast {
+  animation: wave-flow 15s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+.animate-wave-medium {
+  animation: wave-flow 20s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+html {
+  @apply transition-colors duration-300;
+}
+
+html.dark {
+  background-color: #020617 !important;
+  color: #f1f5f9 !important;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  @apply antialiased transition-colors duration-300;
+  background-color: inherit;
+}
+
+html.dark body {
+  background-color: #020617 !important;
+  color: #f1f5f9 !important;
+}
+
+#root {
+  width: 100%;
+}
+
+.mask-linear-v {
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+@keyframes vertical-ticker {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-vertical-ticker {
+  animation: vertical-ticker var(--duration, 20s) linear infinite;
+}
+
+.animate-vertical-ticker:hover {
+  animation-play-state: paused;
+}
+
+@keyframes horizontal-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-horizontal-marquee {
+  animation: horizontal-marquee var(--duration, 30s) linear infinite;
+}
